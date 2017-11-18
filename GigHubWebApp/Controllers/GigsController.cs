@@ -26,7 +26,7 @@ namespace GigHubWebApp.Controllers {
         public ActionResult Create(GigFormViewModel gigFormViewModel) {
             var objGig = new Gig {
                 ArtistId = User.Identity.GetUserId(),
-                DateTime = gigFormViewModel.DateTime,
+                DateTime = gigFormViewModel.GetDateTime(),
                 Venue = gigFormViewModel.Venue,
                 GenreId = gigFormViewModel.Genre
             };
