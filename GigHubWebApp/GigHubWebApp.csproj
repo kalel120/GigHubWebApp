@@ -199,8 +199,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711181613031_Initial.cs" />
+    <Compile Include="Migrations\201711181613031_Initial.Designer.cs">
+      <DependentUpon>201711181613031_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711181617252_Added Gigs and Genres Table.cs" />
+    <Compile Include="Migrations\201711181617252_Added Gigs and Genres Table.Designer.cs">
+      <DependentUpon>201711181617252_Added Gigs and Genres Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711181718566_OverrideConvensionsForGigs&amp;Genre.cs" />
+    <Compile Include="Migrations\201711181718566_OverrideConvensionsForGigs&amp;Genre.Designer.cs">
+      <DependentUpon>201711181718566_OverrideConvensionsForGigs&amp;Genre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\Gig.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -284,6 +300,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711181613031_Initial.resx">
+      <DependentUpon>201711181613031_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711181617252_Added Gigs and Genres Table.resx">
+      <DependentUpon>201711181617252_Added Gigs and Genres Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711181718566_OverrideConvensionsForGigs&amp;Genre.resx">
+      <DependentUpon>201711181718566_OverrideConvensionsForGigs&amp;Genre.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
