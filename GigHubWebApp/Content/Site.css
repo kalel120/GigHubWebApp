@@ -22,3 +22,34 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/*Bootstrap override*/
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #fff;
+    }
+
+    .navbar-inverse .navbar-brand {
+        color: #fff;
+    }
+
+body {
+    font-size: 17px;
+}
+body,
+.tooltip,
+.popover{
+    font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-control {
+    font-size: 17px;    
+}
