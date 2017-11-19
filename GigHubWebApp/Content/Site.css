@@ -38,26 +38,38 @@ textarea {
         color: #fff;
     }
 
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+        color: #fff;
+        background-color: rgba(173, 28, 23, 0.77);
+    }
+    .navbar-brand {
+        font-size: 25px;
+        font-weight: 500;
+    }
 body {
     font-size: 17px;
 }
+
 body,
 .tooltip,
-.popover{
+.popover {
     font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .form-group {
     margin-bottom: 20px;
 }
+
 .form-control {
     font-size: 16px;
     -ms-border-radius: 9px;
     border-radius: 9px;
 }
-.form-control:focus {
-    border-color: #ff4342;
-}
+
+    .form-control:focus {
+        border-color: #ff4342;
+    }
+
 .btn {
     font-size: 19px;
     padding: 9px 18px;
