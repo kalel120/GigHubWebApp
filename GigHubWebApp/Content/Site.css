@@ -55,6 +55,9 @@ body,
     -ms-border-radius: 9px;
     border-radius: 9px;
 }
+.form-control:focus {
+    border-color: #ff4342;
+}
 .btn {
     font-size: 19px;
     padding: 9px 18px;
