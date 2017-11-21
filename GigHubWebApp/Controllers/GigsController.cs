@@ -25,6 +25,10 @@ namespace GigHubWebApp.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(GigFormViewModel gigFormViewModel) {
+            if (!ModelState.IsValid) {
+                gigFormViewModel.Genres = _dbContext.Genres.ToList();
+                return View("Create", gigFormViewModel);
+            }
             var objGig = new Gig {
                 ArtistId = User.Identity.GetUserId(),
                 DateTime = gigFormViewModel.GetDateTime(),
