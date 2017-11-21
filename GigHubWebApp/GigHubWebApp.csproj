@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201711181920053_Added ForeignKey to Gigs.Designer.cs">
       <DependentUpon>201711181920053_Added ForeignKey to Gigs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711211022433_Added Name to AppUser Model.cs" />
+    <Compile Include="Migrations\201711211022433_Added Name to AppUser Model.Designer.cs">
+      <DependentUpon>201711211022433_Added Name to AppUser Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711181920053_Added ForeignKey to Gigs.resx">
       <DependentUpon>201711181920053_Added ForeignKey to Gigs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711211022433_Added Name to AppUser Model.resx">
+      <DependentUpon>201711211022433_Added Name to AppUser Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
