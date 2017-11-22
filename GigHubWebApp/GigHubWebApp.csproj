@@ -224,7 +224,12 @@
     <Compile Include="Migrations\201711211022433_Added Name to AppUser Model.Designer.cs">
       <DependentUpon>201711211022433_Added Name to AppUser Model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711220856111_AddedAttendenceDomainClass.cs" />
+    <Compile Include="Migrations\201711220856111_AddedAttendenceDomainClass.Designer.cs">
+      <DependentUpon>201711220856111_AddedAttendenceDomainClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Attendence.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -337,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711211022433_Added Name to AppUser Model.resx">
       <DependentUpon>201711211022433_Added Name to AppUser Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711220856111_AddedAttendenceDomainClass.resx">
+      <DependentUpon>201711220856111_AddedAttendenceDomainClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
