@@ -14,6 +14,7 @@ namespace GigHubWebApp.Controllers {
             _dbContext = new ApplicationDbContext();
         }
 
+        [HttpPost]
         public IHttpActionResult Attend(AttendanceDto gigDto) {
             var userId = User.Identity.GetUserId();
 

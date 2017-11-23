@@ -17,6 +17,7 @@
             <div class="details">
                 <span class="artist">
                     @gig.Artist.Name
+                    <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">Follow</button>
                 </span>
                 <span class="genre">
                     @gig.Genre.Name
@@ -40,6 +41,15 @@
                     }).fail(function () {
                         alert("Something went wrong");
                     });
+            });
+
+            $(".js-toggle-followArtist").click(function (event) {
+                let followArtistBtn = $(event.target);
+                $.post("api/following", { artistId: followArtistBtn.attr("data-artist-id") }).done(function () {
+                    followArtistBtn.text("Following");
+                }).fail(function () {
+                    alert("Something went wrong");
+                });
             });
         });
     </script>
