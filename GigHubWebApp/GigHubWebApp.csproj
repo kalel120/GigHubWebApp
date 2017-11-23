@@ -244,8 +244,13 @@
     <Compile Include="Migrations\201711220856111_AddedAttendenceDomainClass.Designer.cs">
       <DependentUpon>201711220856111_AddedAttendenceDomainClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711231131248_Added Following Domain model.cs" />
+    <Compile Include="Migrations\201711231131248_Added Following Domain model.Designer.cs">
+      <DependentUpon>201711231131248_Added Following Domain model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendence.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -361,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711220856111_AddedAttendenceDomainClass.resx">
       <DependentUpon>201711220856111_AddedAttendenceDomainClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231131248_Added Following Domain model.resx">
+      <DependentUpon>201711231131248_Added Following Domain model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
