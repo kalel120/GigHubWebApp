@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
+using GigHubWebApp.DTOs;
 using GigHubWebApp.Models;
 using Microsoft.AspNet.Identity;
 
@@ -13,15 +14,15 @@ namespace GigHubWebApp.Controllers {
             _dbContext = new ApplicationDbContext();
         }
 
-        public IHttpActionResult Attend([FromBody] int gigId) {
+        public IHttpActionResult Attend(AttendanceDto gigDto) {
             var userId = User.Identity.GetUserId();
 
-            if (_dbContext.Attendences.Any(a => a.GigId == gigId && a.AttendeeId == userId)) {
+            if (_dbContext.Attendences.Any(a => a.GigId == gigDto.GigId && a.AttendeeId == userId)) {
                 return BadRequest("Duplicate Attendance");
             }
 
             var attendence = new Attendence {
-                GigId = gigId,
+                GigId = gigDto.GigId,
                 AttendeeId = userId
             };
 
