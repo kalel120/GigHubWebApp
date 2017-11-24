@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using GigHubWebApp.Models;
+using GigHubWebApp.ViewModels;
 
 namespace GigHubWebApp.Controllers {
     public class HomeController : Controller {
@@ -13,13 +12,19 @@ namespace GigHubWebApp.Controllers {
         public HomeController() {
             _dbContext = new ApplicationDbContext();
         }
-        // Display all upcoming gigs
+
+
         public ActionResult Index() {
             var upcomingGigs = _dbContext.Gigs
                             .Include(g => g.Artist)
                             .Include(g => g.Genre)
                             .Where(g => g.DateTime > DateTime.Now);
-            return View(upcomingGigs);
+
+            var upcomingGigsViewModel = new HomeViewModel {
+                UpcomingGigs = upcomingGigs,
+                IsAuthenticated = User.Identity.IsAuthenticated
+            };
+            return View(upcomingGigsViewModel);
         }
 
         public ActionResult About() {
