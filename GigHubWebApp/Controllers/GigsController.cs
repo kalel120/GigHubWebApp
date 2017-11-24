@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using GigHubWebApp.Models;
@@ -25,7 +26,7 @@ namespace GigHubWebApp.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(GigFormViewModel gigFormViewModel) {
-            if (!ModelState.IsValid) {
+            if(!ModelState.IsValid) {
                 gigFormViewModel.Genres = _dbContext.Genres.ToList();
                 return View("Create", gigFormViewModel);
             }
@@ -59,6 +60,16 @@ namespace GigHubWebApp.Controllers {
                 Heading = "Gig's I'm Going"
             };
             return View("Gigs", gigsViewModel);
+        }
+
+        [Authorize]
+        public ActionResult Mine() {
+            var userId = User.Identity.GetUserId();
+            var myUpcomingGigs = _dbContext.Gigs
+                                .Where(g => g.ArtistId == userId && g.DateTime > DateTime.Now)
+                                .Include(g => g.Genre)
+                                .ToList();
+            return View(myUpcomingGigs);
         }
     }
 }
