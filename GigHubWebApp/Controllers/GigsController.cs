@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using GigHubWebApp.Models;
@@ -40,6 +40,24 @@ namespace GigHubWebApp.Controllers {
             _dbContext.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public ActionResult Attending() {
+            var userId = User.Identity.GetUserId();
+
+            var attendingGigs = _dbContext.Attendences
+                                .Where(a => a.AttendeeId == userId)
+                                .Select(a => a.Gig)
+                                .Include(ar => ar.Artist)
+                                .Include(g => g.Genre)
+                                .ToList();
+
+            var gigsViewModel = new GigsViewModel {
+                UpcomingGigs = attendingGigs,
+                IsAuthenticated = User.Identity.IsAuthenticated
+            };
+            return View(gigsViewModel);
         }
     }
 }
