@@ -5,5 +5,6 @@ namespace GigHubWebApp.ViewModels {
     public class GigsViewModel {
         public bool IsAuthenticated { get; set; }
         public IEnumerable<Gig> UpcomingGigs { get; set; }
+        public string Heading { get; set; }
     }
 }

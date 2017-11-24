@@ -22,9 +22,10 @@ namespace GigHubWebApp.Controllers {
 
             var upcomingGigsViewModel = new GigsViewModel {
                 UpcomingGigs = upcomingGigs,
-                IsAuthenticated = User.Identity.IsAuthenticated
+                IsAuthenticated = User.Identity.IsAuthenticated,
+                Heading = "All Upcoming Gigs"
             };
-            return View(upcomingGigsViewModel);
+            return View("Gigs", upcomingGigsViewModel);
         }
 
         public ActionResult About() {
@@ -35,7 +36,6 @@ namespace GigHubWebApp.Controllers {
 
         public ActionResult Contact() {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

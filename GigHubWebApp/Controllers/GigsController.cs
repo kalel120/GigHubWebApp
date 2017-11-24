@@ -55,9 +55,10 @@ namespace GigHubWebApp.Controllers {
 
             var gigsViewModel = new GigsViewModel {
                 UpcomingGigs = attendingGigs,
-                IsAuthenticated = User.Identity.IsAuthenticated
+                IsAuthenticated = User.Identity.IsAuthenticated,
+                Heading = "Gig's I'm Going"
             };
-            return View(gigsViewModel);
+            return View("Gigs", gigsViewModel);
         }
     }
 }

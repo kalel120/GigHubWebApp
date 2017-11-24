@@ -3,6 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 
+<h2>@Model.Heading</h2>
 <ul class="gigs">
     @foreach (var gig in Model.UpcomingGigs) {
         <li>
