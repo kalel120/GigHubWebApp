@@ -52,7 +52,7 @@ namespace GigHubWebApp.Controllers
         }
 
         //
-        // GET: /Manage/Index
+        // GET: /Manage/GetFollowingArtist
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =

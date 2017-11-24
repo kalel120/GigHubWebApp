@@ -1,0 +1,14 @@
+﻿@model GigHubWebApp.ViewModels.FollowingArtistViewModel
+@{
+    ViewBag.Title = "FollowingArtist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Artist I'm Following</h2>
+
+<ul>
+    @foreach(var artist in Model.FollowingArtist)
+    {
+        <li>@artist.Name - @artist.UserName</li>
+    }
+</ul>
