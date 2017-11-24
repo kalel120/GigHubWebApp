@@ -40,7 +40,7 @@ namespace GigHubWebApp.Controllers {
             _dbContext.Gigs.Add(objGig);
             _dbContext.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Mine", "Gigs");
         }
 
         [Authorize]
