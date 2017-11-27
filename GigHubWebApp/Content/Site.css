@@ -94,6 +94,7 @@ body,
     font-size: 16px;
     -ms-border-radius: 9px;
     border-radius: 9px;
+    height: 43px;
 }
 
     .form-control:focus {
@@ -101,8 +102,6 @@ body,
     }
 
 .btn {
-    /*font-size: 19px;
-    padding: 9px 18px;*/
     -ms-border-radius: 9px;
     border-radius: 9px;
 }
@@ -124,6 +123,7 @@ body,
             color: whitesmoke;
             width: 60px;
             text-align: center;
+            -ms-border-radius: 8px;
             border-radius: 8px;
         }
 
@@ -136,6 +136,7 @@ body,
                 padding: 8px 12px;
                 background: #e8e5e3;
                 color: #0b1119;
+                -ms-border-radius: 4px;
                 border-radius: 4px;
             }
 
@@ -156,11 +157,12 @@ body,
                 font-size: 14px;
                 text-transform: lowercase;
             }
-            
-.gigs > li .details .actions {
-    font-size: 15px;
-    display: none;
-}
-.gigs >li:hover .details .actions {
-    display: block;
-}
+
+            .gigs > li .details .actions {
+                font-size: 15px;
+                display: none;
+            }
+
+        .gigs > li:hover .details .actions {
+            display: block;
+        }
