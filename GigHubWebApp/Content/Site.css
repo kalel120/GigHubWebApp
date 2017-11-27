@@ -28,12 +28,29 @@ textarea {
     font-weight: bold;
 }
 
-.voffset{ margin-top: 1px; }
-.voffset2{ margin-top: 2px; }
-.voffset4{ margin-top: 4px; }
-.voffset6{ margin-top: 6px; }
-.voffset8{ margin-top: 8px; }
-.voffset10{ margin-top: 10px; }
+.voffset {
+    margin-top: 1px;
+}
+
+.voffset2 {
+    margin-top: 2px;
+}
+
+.voffset4 {
+    margin-top: 4px;
+}
+
+.voffset6 {
+    margin-top: 6px;
+}
+
+.voffset8 {
+    margin-top: 8px;
+}
+
+.voffset10 {
+    margin-top: 10px;
+}
 
 /*Bootstrap override*/
 .navbar-inverse {
@@ -95,45 +112,55 @@ body,
 .gigs {
     list-style: none;
 }
-.gigs > li {
-    position: relative;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
 
-.gigs > li .date {
-    background: #cc1c1c;
-    color: whitesmoke;
-    width: 60px;
-    text-align: center;
-    border-radius: 8px;
+    .gigs > li {
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
 
-}
-.gigs > li .date .month {
-    padding: 6px 12px;
-    text-transform: uppercase;
-}
-.gigs > li .date .day {
-    padding: 8px 12px;
-    background: #e8e5e3;
-    color: #0b1119;
-    border-radius: 4px;
-}
+        .gigs > li .date {
+            background: #cc1c1c;
+            color: whitesmoke;
+            width: 60px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+            .gigs > li .date .month {
+                padding: 6px 12px;
+                text-transform: uppercase;
+            }
+
+            .gigs > li .date .day {
+                padding: 8px 12px;
+                background: #e8e5e3;
+                color: #0b1119;
+                border-radius: 4px;
+            }
 
 
-.gigs >li .details {
-    position: absolute;
-    top: 0px;
-    left: 100px;
-}
+        .gigs > li .details {
+            position: absolute;
+            top: 0px;
+            left: 100px;
+        }
 
-.gigs > li .details .artist {
-    font-weight: bold;
-    font-size: 18px;
+            .gigs > li .details .artist {
+                font-weight: bold;
+                font-size: 18px;
+                display: block;
+            }
+
+            .gigs > li .details .genre {
+                font-size: 14px;
+                text-transform: lowercase;
+            }
+            
+.gigs > li .details .actions {
+    font-size: 15px;
+    display: none;
+}
+.gigs >li:hover .details .actions {
     display: block;
-}
-
-.gigs > li .details .genre {
-    font-size: 14px;
-    text-transform: lowercase;
 }
