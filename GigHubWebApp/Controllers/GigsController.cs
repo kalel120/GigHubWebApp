@@ -18,7 +18,7 @@ namespace GigHubWebApp.Controllers {
         public ActionResult Create() {
             var gigFormViewModel = new GigFormViewModel {
                 Genres = _dbContext.Genres.ToList(),
-                Heading = "Create a Gig"
+                Heading = "Create My Gig"
             };
             return View("GigForm", gigFormViewModel);
         }
@@ -35,7 +35,7 @@ namespace GigHubWebApp.Controllers {
                 Time = gig.DateTime.ToString("HH:mm"),
                 Venue = gig.Venue,
                 Genre = gig.GenreId,
-                Heading = "Edit a Gig"
+                Heading = "Edit Gig"
             };
             return View("GigForm", gigFormViewModel);
         }

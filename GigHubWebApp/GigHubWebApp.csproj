@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201711231131248_Added Following Domain model.Designer.cs">
       <DependentUpon>201711231131248_Added Following Domain model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711280700255_AddedIsDeletedPropToGigTable.cs" />
+    <Compile Include="Migrations\201711280700255_AddedIsDeletedPropToGigTable.Designer.cs">
+      <DependentUpon>201711280700255_AddedIsDeletedPropToGigTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendence.cs" />
     <Compile Include="Models\Following.cs" />
@@ -376,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711231131248_Added Following Domain model.resx">
       <DependentUpon>201711231131248_Added Following Domain model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711280700255_AddedIsDeletedPropToGigTable.resx">
+      <DependentUpon>201711280700255_AddedIsDeletedPropToGigTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
