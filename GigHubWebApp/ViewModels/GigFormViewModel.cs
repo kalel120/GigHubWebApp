@@ -5,6 +5,14 @@ using GigHubWebApp.Models;
 
 namespace GigHubWebApp.ViewModels {
     public class GigFormViewModel {
+        public int Id { get; set; }
+
+        public string Action {
+            get {
+                return Id != 0 ? "Update" : "Create";
+            }
+        }
+
         [Required]
         public string Venue { get; set; }
 
@@ -20,6 +28,8 @@ namespace GigHubWebApp.ViewModels {
         public byte Genre { get; set; }
 
         public IEnumerable<Genre> Genres { get; set; }
+
+        public string Heading { get; set; }
 
         public DateTime GetDateTime() {
             return DateTime.Parse(string.Format("{0} {1}", Date, Time));
