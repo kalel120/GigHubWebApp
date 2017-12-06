@@ -256,9 +256,16 @@
     <Compile Include="Migrations\201711280700255_AddedIsDeletedPropToGigTable.Designer.cs">
       <DependentUpon>201711280700255_AddedIsDeletedPropToGigTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712061044541_AddedNotificationTables.cs" />
+    <Compile Include="Migrations\201712061044541_AddedNotificationTables.Designer.cs">
+      <DependentUpon>201712061044541_AddedNotificationTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendence.cs" />
     <Compile Include="Models\Following.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationType.cs" />
+    <Compile Include="Models\UserNotification.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -386,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711280700255_AddedIsDeletedPropToGigTable.resx">
       <DependentUpon>201711280700255_AddedIsDeletedPropToGigTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061044541_AddedNotificationTables.resx">
+      <DependentUpon>201712061044541_AddedNotificationTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
