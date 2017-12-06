@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<GigHubWebApp.Models.Gig>
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "My Upcoming Gigs";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -40,20 +40,21 @@
             $(".js-cancel-gig").click(function (e) {
                 let link = $(e.target);
 
-                bootbox.confirm({
-                    message: "Are you sure you want to delete this gig?",
+                bootbox.dialog({
+                    title: 'Cancel Gig',
+                    message: "<p>Are you sure you want to cancel this gig?</p>",
                     buttons: {
-                        confirm: {
-                            label: 'Yes',
-                            className: 'btn-success'
+                        no: {
+                            label: "No",
+                            className: 'btn-default pull-left',
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
                         },
-                        cancel: {
-                            label: 'No',
-                            className: 'btn-danger'
-                        }
-                    },
-                    callback: function (result) {
-                        if (result) {
+                        yes: {
+                            label: "Yes",
+                            className: 'btn-danger',
+                            callback: function () {
                             $.ajax({
                                 url: "/api/gigs/" + link.attr("data-gig-id"),
                                 method: "DELETE"
@@ -66,6 +67,7 @@
                                 .fail(function () {
                                     bootbox.alert("Something went wrong!");
                                 });
+                            }
                         }
                     }
                 });

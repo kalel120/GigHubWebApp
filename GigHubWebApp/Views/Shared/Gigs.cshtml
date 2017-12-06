@@ -1,6 +1,6 @@
 ﻿@model GigHubWebApp.ViewModels.GigsViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = Model.Heading;
 }
 
 <h2>@Model.Heading</h2>
@@ -18,6 +18,10 @@
             <div class="details">
                 <span class="artist">
                     @gig.Artist.Name
+
+                    @if (gig.IsCanceled) {
+                        <span class="label label-warning">Canceled</span>
+                    }
                     @if (Model.IsAuthenticated) {
                         <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">Follow</button>
                     }
@@ -25,7 +29,7 @@
                 <span class="genre">
                     @gig.Genre.Name
                 </span>
-                @if (Model.IsAuthenticated) {
+                @if (Model.IsAuthenticated && !gig.IsCanceled) {
                     <button data-gig-id="@gig.Id" class="btn btn-default pull-right js-toggle-attendance">Want to go?</button>
                 }
             </div>
