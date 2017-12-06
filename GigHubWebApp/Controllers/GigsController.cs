@@ -104,7 +104,7 @@ namespace GigHubWebApp.Controllers {
         public ActionResult Mine() {
             var userId = User.Identity.GetUserId();
             var myUpcomingGigs = _dbContext.Gigs
-                                .Where(g => g.ArtistId == userId && g.DateTime > DateTime.Now)
+                                .Where(g => g.ArtistId == userId && g.DateTime > DateTime.Now && g.IsCanceled == false)
                                 .Include(g => g.Genre)
                                 .ToList();
             return View(myUpcomingGigs);
