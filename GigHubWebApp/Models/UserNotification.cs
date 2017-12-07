@@ -18,9 +18,7 @@ namespace GigHubWebApp.Models {
 
         public bool IsRead { get; set; }
 
-        protected UserNotification() {
-
-        }
+        protected UserNotification() { }
 
         public UserNotification(ApplicationUser user, Notification notification) {
             if (user == null) {
