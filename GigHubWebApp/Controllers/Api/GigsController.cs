@@ -24,19 +24,12 @@ namespace GigHubWebApp.Controllers.Api {
 
             gig.IsCanceled = true;
 
-            var notification = new Notification {
-                DateTime = DateTime.Now,
-                Type = NotificationType.GigCanceled,
-                Gig = gig
-            };
+            var notification = new Notification(NotificationType.GigCanceled, gig);
 
             var attendees = _dbContext.Attendences.Where(g => g.GigId == id).Select(u => u.Attendee).ToList();
+
             foreach (var attendee in attendees) {
-                var userNotification = new UserNotification {
-                    User = attendee,
-                    Notification = notification
-                };
-                _dbContext.UserNotifications.Add(userNotification);
+                attendee.Notify(notification);
             }
 
             _dbContext.SaveChanges();
