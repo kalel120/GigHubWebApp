@@ -1,10 +1,10 @@
-﻿using System;
+﻿using GigHubWebApp.Models;
+using GigHubWebApp.ViewModels;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using GigHubWebApp.Models;
-using GigHubWebApp.ViewModels;
-using Microsoft.AspNet.Identity;
 
 namespace GigHubWebApp.Controllers {
     public class GigsController : Controller {
@@ -18,7 +18,7 @@ namespace GigHubWebApp.Controllers {
         public ActionResult Create() {
             var gigFormViewModel = new GigFormViewModel {
                 Genres = _dbContext.Genres.ToList(),
-                Heading = "Create My Gig"
+                Heading = "Create Gig"
             };
             return View("GigForm", gigFormViewModel);
         }
@@ -35,7 +35,7 @@ namespace GigHubWebApp.Controllers {
                 Time = gig.DateTime.ToString("HH:mm"),
                 Venue = gig.Venue,
                 Genre = gig.GenreId,
-                Heading = "Edit Gig"
+                Heading = "Update Gig"
             };
             return View("GigForm", gigFormViewModel);
         }
@@ -71,10 +71,11 @@ namespace GigHubWebApp.Controllers {
                 return View("GigForm", gigFormViewModel);
             }
             var userId = User.Identity.GetUserId();
-            var objGig = _dbContext.Gigs.Single(g => g.Id == gigFormViewModel.Id && g.ArtistId == userId);
-            objGig.Venue = gigFormViewModel.Venue;
-            objGig.DateTime = gigFormViewModel.GetDateTime();
-            objGig.GenreId = gigFormViewModel.Genre;
+            var gig = _dbContext.Gigs
+                .Include(g => g.Attendences.Select(a => a.Attendee))
+                .Single(g => g.Id == gigFormViewModel.Id && g.ArtistId == userId);
+
+            gig.Update(gigFormViewModel);
 
             _dbContext.SaveChanges();
 
