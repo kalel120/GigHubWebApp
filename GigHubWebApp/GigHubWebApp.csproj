@@ -218,6 +218,10 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DTOs\AttendanceDto.cs" />
     <Compile Include="DTOs\FollowingDto.cs" />
+    <Compile Include="DTOs\GenreDto.cs" />
+    <Compile Include="DTOs\GigDto.cs" />
+    <Compile Include="DTOs\NotificationDto.cs" />
+    <Compile Include="DTOs\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
