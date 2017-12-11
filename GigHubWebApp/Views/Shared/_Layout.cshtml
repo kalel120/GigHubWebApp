@@ -43,7 +43,10 @@
     <script>
         $(function() {
             $.getJSON("/api/notifications", function(notifications) {
-                $(".js-notification-count").text(notifications.length).removeClass("hide");
+                $(".js-notification-count")
+                    .text(notifications.length)
+                    .removeClass("hide")
+                    .addClass("animated bounceInDown");
             });
         });
     </script>
