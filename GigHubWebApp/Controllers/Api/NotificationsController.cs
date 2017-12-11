@@ -1,4 +1,5 @@
-﻿using GigHubWebApp.DTOs;
+﻿using AutoMapper;
+using GigHubWebApp.DTOs;
 using GigHubWebApp.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace GigHubWebApp.Controllers.Api {
                                             .Include(n => n.Gig.Artist)
                                             .ToList();
 
-            return notifications;
+            return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
     }
 }
