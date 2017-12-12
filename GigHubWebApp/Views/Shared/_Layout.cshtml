@@ -48,6 +48,16 @@
                     .removeClass("hide")
                     .addClass("animated bounceInDown");
             });
+
+            $(".notifications").popover({
+                html: true,
+                title: "Notifications",
+                content: function() {
+                    return "You have some notifications";
+                },
+                placement: "bottom"
+            });
+
         });
     </script>
 </body>
