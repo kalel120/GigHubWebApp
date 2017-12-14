@@ -53,7 +53,9 @@
                 html: true,
                 title: "Notifications",
                 content: function() {
-                    return "You have some notifications";
+                    let compiled = _.template("Hello <%= name %>");
+                    let html = compiled({ name: "Imran" });
+                    return html;
                 },
                 placement: "bottom"
             });
