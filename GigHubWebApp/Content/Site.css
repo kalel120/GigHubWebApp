@@ -119,6 +119,9 @@ body,
     border-radius: 9px;
 }
 
+.popover {
+    max-width: 30%;
+}
 
 /*Page specific style*/
 .gigs {

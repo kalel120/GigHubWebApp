@@ -45,7 +45,7 @@
             <%
                 _.each(notifications, function(noti){
                 if(noti.type == 1){%>
-                <li><b><%=noti.gig.artist.name %></b> has canceled the gig at <%= noti.gig.dateTime %> on <%= noti.gig.venue %> </li>
+                <li><b><%=noti.gig.artist.name %></b> has canceled the gig at <b><%= moment(noti.gig.dateTime).format("D MMM 'YY HH:MM") %></b> on <%= noti.gig.venue %> </li>
             <%  }
 
                 else if(noti.type == 2){
@@ -53,8 +53,8 @@
 
                     if(noti.originalDateTime != noti.gig.dateTime){
                         changes.push('date/time');
-                        originalValues.push(noti.originalDateTime);
-                        newValues.push(noti.gig.dateTime);
+                        originalValues.push( moment(noti.originalDateTime).format("D MMM 'YY HH:mm") );
+                        newValues.push( moment(noti.gig.dateTime).format("D MMM 'YY HH:mm"));
                     }
 
                     if(noti.originalVenue != noti.gig.venue){
@@ -84,7 +84,7 @@
 
                 $(".notifications").popover({
                     html: true,
-                    title: "<b>Notifications</b>",
+                    title: "Notifications",
                     content: function () {
                         let compiled = _.template($("#notifications-template").html());
                         return compiled({ notifications: notifications });
