@@ -41,7 +41,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 <script type="text/noti-template" id="notifications-template">
-    <ul>
+    <ul class="notifications">
         <%
             _.each(notifications, function(noti){
             if(noti.type == 1){%>
@@ -84,12 +84,13 @@
 
                 $(".notifications").popover({
                     html: true,
-                    title: "Notifications",
+                    title: "<b>Notifications</b>",
                     content: function () {
                         let compiled = _.template($("#notifications-template").html());
                         return compiled({ notifications: notifications });
                     },
-                    placement: "bottom"
+                    placement: "bottom",
+                    template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
                 });
             });
         });
