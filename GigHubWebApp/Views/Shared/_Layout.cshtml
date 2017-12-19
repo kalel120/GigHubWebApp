@@ -40,35 +40,35 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-<script type="text/noti-template" id="notifications-template">
-    <ul class="notifications">
-        <%
-            _.each(notifications, function(noti){
-            if(noti.type == 1){%>
-            <li><b><%=noti.gig.artist.name %></b> has canceled the gig at <%= noti.gig.dateTime %> on <%= noti.gig.venue %> </li>
-        <%  }
+    <script type="text/noti-template" id="notifications-template">
+        <ul class="notifications">
+            <%
+                _.each(notifications, function(noti){
+                if(noti.type == 1){%>
+                <li><b><%=noti.gig.artist.name %></b> has canceled the gig at <%= noti.gig.dateTime %> on <%= noti.gig.venue %> </li>
+            <%  }
 
-            else if(noti.type == 2){
-                var changes = [], originalValues = [], newValues = [];
+                else if(noti.type == 2){
+                    var changes = [], originalValues = [], newValues = [];
 
-                if(noti.originalDateTime != noti.gig.dateTime){
-                    changes.push('date/time');
-                    originalValues.push(noti.originalDateTime);
-                    newValues.push(noti.gig.dateTime);
-                }
+                    if(noti.originalDateTime != noti.gig.dateTime){
+                        changes.push('date/time');
+                        originalValues.push(noti.originalDateTime);
+                        newValues.push(noti.gig.dateTime);
+                    }
 
-                if(noti.originalVenue != noti.gig.venue){
-                    changes.push('venue');
-                    originalValues.push(noti.originalVenue);
-                    newValues.push(noti.gig.venue);
-                }
-        %>
-                <li><b><%= noti.gig.artist.name %></b> has changed the <%= changes.join('and') %> of the gig from <b><%= originalValues.join('/') %></b> to <b><%= newValues.join('/') %></b> </li>
+                    if(noti.originalVenue != noti.gig.venue){
+                        changes.push('venue');
+                        originalValues.push(noti.originalVenue);
+                        newValues.push(noti.gig.venue);
+                    }
+            %>
+                    <li><b><%= noti.gig.artist.name %></b> has changed the <%= changes.join('and') %> of the gig from <b><%= originalValues.join('/') %></b> to <b><%= newValues.join('/') %></b> </li>
 
-        <%    }
-          });
-        %>
-    </ul>
+            <%    }
+              });
+            %>
+        </ul>
     </script>
     <script>
         $(function () {

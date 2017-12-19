@@ -70,13 +70,13 @@ textarea {
         position: relative;
     }
 
-    .navbar-inverse .notifications .badge {
-        position: absolute;
-        top: 5px;
-        right: 3px;
-        background: #a80a0a;
-        color: white;
-    }
+        .navbar-inverse .notifications .badge {
+            position: absolute;
+            top: 5px;
+            right: 3px;
+            background: #a80a0a;
+            color: white;
+        }
 
     .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
         color: #fff;
@@ -184,16 +184,16 @@ body,
     padding: 0;
 }
 
-ul.notifications {
+.popover-notifications ul.notifications {
     list-style: none;
     padding-left: 0;
 }
 
-ul.notifications > li {
-    border-bottom: 2px solid #ddd;
-    padding: 12px;
-}
-ul.notifications > li:last-child {
-    border-bottom: none;
+    .popover-notifications ul.notifications > li {
+        border-bottom: 2px solid #ddd;
+        padding: 12px;
+    }
 
-}
+        .popover-notifications ul.notifications > li:last-child {
+            border-bottom: none;
+        }
