@@ -163,3 +163,6 @@ textarea {
 .popover-notifications ul.notifications > li:last-child {
   border-bottom: none;
 }
+#bs-search-gig {
+  width: 300px;
+}

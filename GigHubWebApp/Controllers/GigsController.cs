@@ -110,5 +110,10 @@ namespace GigHubWebApp.Controllers {
                                 .ToList();
             return View(myUpcomingGigs);
         }
+
+        [HttpPost]
+        public ActionResult Search(GigsViewModel gigViewModel) {
+            return RedirectToAction("Index", "Home", new { query = gigViewModel.SearchTerm });
+        }
     }
 }
