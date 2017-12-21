@@ -8,7 +8,7 @@
 @using (Html.BeginForm("Search", "Gigs")) {
     <div class="form-group">
         <div id="bs-search-gig" class="input-group">
-            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", @placeholder="Search by Genre, Artist, Venue.."})
+            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Genre, Artist, Venue.." })
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search"></i>
             </span>
@@ -28,7 +28,9 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
+                    <a href="@Url.Action("Details", "Gigs", new {id = gig.Id})">
+                        @gig.Artist.Name
+                    </a>
 
                     @if (gig.IsCanceled) {
                         <span class="label label-warning">Canceled</span>
@@ -41,7 +43,12 @@
                     @gig.Genre.Name
                 </span>
                 @if (Model.IsAuthenticated && !gig.IsCanceled) {
-                    <button data-gig-id="@gig.Id" class="btn btn-default pull-right js-toggle-attendance">Want to go?</button>
+                    if (Model.Attendences.Contains(gig.Id)) {
+                        <button class="btn btn-info pull-right">Going</button>
+                    }
+                    else {
+                        <button data-gig-id="@gig.Id" class="btn btn-default pull-right js-toggle-attendance">Want to go?</button>
+                    }
                 }
             </div>
         </li>

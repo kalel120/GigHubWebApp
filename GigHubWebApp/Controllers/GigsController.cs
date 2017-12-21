@@ -115,5 +115,31 @@ namespace GigHubWebApp.Controllers {
         public ActionResult Search(GigsViewModel gigViewModel) {
             return RedirectToAction("Index", "Home", new { query = gigViewModel.SearchTerm });
         }
+
+
+        public ActionResult Details(int id) {
+            var gig = _dbContext.Gigs.Include(g => g.Artist)
+                .Include(g => g.Genre)
+                .SingleOrDefault(g => g.Id == id);
+
+            if (gig == null) {
+                return HttpNotFound();
+            }
+
+            var gigDetailsViewModel = new GigDetailsViewModel {
+                Gig = gig
+            };
+
+            if (User.Identity.IsAuthenticated) {
+                var userId = User.Identity.GetUserId();
+
+                gigDetailsViewModel.IsAttending =
+                    _dbContext.Attendences.Any(a => a.GigId == id && a.AttendeeId == userId);
+                gigDetailsViewModel.IsFollowing =
+                    _dbContext.Followings.Any(f => f.FolloweeId == gig.ArtistId && f.FollowerId == userId);
+            }
+
+            return View("Details", gigDetailsViewModel);
+        }
     }
 }
