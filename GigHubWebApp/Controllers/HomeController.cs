@@ -33,13 +33,15 @@ namespace GigHubWebApp.Controllers {
                                       .ToList()
                                       .ToLookup(a => a.GigId);
 
+            var followings = _dbContext.Followings.Where(f => f.FollowerId == userId).Select(f => f.FolloweeId).ToList();
 
             var upcomingGigsViewModel = new GigsViewModel {
                 UpcomingGigs = upcomingGigs,
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Heading = "All Upcoming Gigs",
                 SearchTerm = query,
-                Attendences = attendences
+                Attendences = attendences,
+                Followings = followings
             };
             return View("Gigs", upcomingGigsViewModel);
         }
