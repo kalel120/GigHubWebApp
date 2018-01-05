@@ -87,14 +87,19 @@ namespace GigHubWebApp.Controllers {
             var userId = User.Identity.GetUserId();
 
             var attendingGigs = _dbContext.Attendences
-                                .Where(a => a.AttendeeId == userId)
+                                .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
                                 .Select(a => a.Gig)
                                 .Include(ar => ar.Artist)
                                 .Include(g => g.Genre)
                                 .ToList();
 
+            var attendences = _dbContext.Attendences.Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
+                    .ToList()
+                    .ToLookup(a => a.GigId);
+
             var gigsViewModel = new GigsViewModel {
                 UpcomingGigs = attendingGigs,
+                Attendences = attendences,
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Heading = "Gig's I'm Going"
             };

@@ -1,5 +1,4 @@
-﻿@using System.Diagnostics.Eventing.Reader
-@model GigHubWebApp.ViewModels.GigsViewModel
+﻿@model GigHubWebApp.ViewModels.GigsViewModel
 @{
     ViewBag.Title = Model.Heading;
 }
@@ -37,12 +36,7 @@
                         <span class="label label-warning">Canceled</span>
                     }
                     @if (Model.IsAuthenticated) {
-                        if (Model.Followings.Contains(gig.ArtistId)) {
-                            <button class="btn btn-sm btn-link">Following</button>
-                        }
-                        else {
-                            <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">Follow?</button>
-                        }
+                        <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">Follow?</button>
 
                     }
                 </span>
@@ -50,12 +44,7 @@
                     @gig.Genre.Name
                 </span>
                 @if (Model.IsAuthenticated && !gig.IsCanceled) {
-                    if (Model.Attendences.Contains(gig.Id)) {
-                        <button class="btn btn-info pull-right">Going</button>
-                    }
-                    else {
-                        <button data-gig-id="@gig.Id" class="btn btn-default pull-right js-toggle-attendance">Want to go?</button>
-                    }
+                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id)? "btn-info" :"btn-default") btn-sm pull-right js-toggle-attendance">Going?</button>
                 }
             </div>
         </li>

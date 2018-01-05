@@ -28,20 +28,16 @@ namespace GigHubWebApp.Controllers {
             }
 
             var userId = User.Identity.GetUserId();
-            var attendences =
-                _dbContext.Attendences.Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
+            var attendences = _dbContext.Attendences.Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
                                       .ToList()
                                       .ToLookup(a => a.GigId);
-
-            var followings = _dbContext.Followings.Where(f => f.FollowerId == userId).Select(f => f.FolloweeId).ToList();
 
             var upcomingGigsViewModel = new GigsViewModel {
                 UpcomingGigs = upcomingGigs,
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Heading = "All Upcoming Gigs",
                 SearchTerm = query,
-                Attendences = attendences,
-                Followings = followings
+                Attendences = attendences
             };
             return View("Gigs", upcomingGigsViewModel);
         }
