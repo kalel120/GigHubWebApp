@@ -44,7 +44,9 @@
                     @gig.Genre.Name
                 </span>
                 @if (Model.IsAuthenticated && !gig.IsCanceled) {
-                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id)? "btn-info" :"btn-default") btn-sm pull-right js-toggle-attendance">Going?</button>
+                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id) ? "btn-info" : "btn-default") btn-sm pull-right js-toggle-attendance">
+                        @(Model.Attendences.Contains(gig.Id) ? "Will Go!" : "Going?")
+                    </button>
                 }
             </div>
         </li>
@@ -56,12 +58,25 @@
         $(function () {
             $(".js-toggle-attendance").click(function (event) {
                 var button = $(event.target);
-                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
-                    .done(function () {
-                        button.removeClass("btn-default").addClass("btn-info").text("Going");
-                    }).fail(function () {
-                        alert("Something went wrong");
-                    });
+                if (button.hasClass("btn-default")) {
+                    $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
+                        .done(function () {
+                            button.removeClass("btn-default").addClass("btn-info").text("Will Go!");
+                        }).fail(function () {
+                            alert("Something went wrong");
+                        });
+                } else {
+                    $.ajax({
+                        url: "/api/attendances/" + button.attr("data-gig-id"),
+                        method: "DELETE"
+                    })
+                        .done(function () {
+                            button.removeClass("btn-info").addClass("btn-default").text("Going?");
+                        })
+                        .fail(function () {
+                            alert("Something is wrong");
+                        });
+                }
             });
 
             $(".js-toggle-followArtist").click(function (event) {
