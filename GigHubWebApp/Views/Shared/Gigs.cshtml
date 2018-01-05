@@ -67,7 +67,7 @@
         $(function () {
             $(".js-toggle-attendance").click(function (event) {
                 var button = $(event.target);
-                $.post("api/attendances", { gigId: button.attr("data-gig-id") })
+                $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
                     .done(function () {
                         button.removeClass("btn-default").addClass("btn-info").text("Going");
                     }).fail(function () {
@@ -77,7 +77,7 @@
 
             $(".js-toggle-followArtist").click(function (event) {
                 let followArtistBtn = $(event.target);
-                $.post("api/following", { artistId: followArtistBtn.attr("data-artist-id") }).done(function () {
+                $.post("/api/following", { artistId: followArtistBtn.attr("data-artist-id") }).done(function () {
                     followArtistBtn.text("Following");
                 }).fail(function () {
                     alert("Something went wrong");
