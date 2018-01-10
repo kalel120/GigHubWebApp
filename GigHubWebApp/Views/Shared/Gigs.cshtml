@@ -36,7 +36,9 @@
                         <span class="label label-warning">Canceled</span>
                     }
                     @if (Model.IsAuthenticated) {
-                        <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">Follow?</button>
+                        <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">
+                            @(Model.Followees.Contains(gig.ArtistId) ? "Following" : "Follow?" )
+                        </button>
 
                     }
                 </span>
