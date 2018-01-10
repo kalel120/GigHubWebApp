@@ -35,18 +35,12 @@
                     @if (gig.IsCanceled) {
                         <span class="label label-warning">Canceled</span>
                     }
-                    @if (Model.IsAuthenticated) {
-                        <button data-artist-id="@gig.ArtistId" class="btn btn-sm btn-link js-toggle-followArtist">
-                            @(Model.Followees.Contains(gig.ArtistId) ? "Following" : "Follow?" )
-                        </button>
-
-                    }
                 </span>
                 <span class="genre">
                     @gig.Genre.Name
                 </span>
                 @if (Model.IsAuthenticated && !gig.IsCanceled) {
-                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id) ? "btn-info" : "btn-default") btn-sm pull-right js-toggle-attendance">
+                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id) ? "btn-info" : "btn-default") btn-sm js-toggle-attendance">
                         @(Model.Attendences.Contains(gig.Id) ? "Will Go!" : "Going?")
                     </button>
                 }
@@ -59,15 +53,6 @@
     <script>
         $(function () {
             GigsController.init("#gigs");
-
-            $(".js-toggle-followArtist").click(function (event) {
-                let followArtistBtn = $(event.target);
-                $.post("/api/following", { artistId: followArtistBtn.attr("data-artist-id") }).done(function () {
-                    followArtistBtn.text("Following");
-                }).fail(function () {
-                    alert("Something went wrong");
-                });
-            });
         });
     </script>
 }

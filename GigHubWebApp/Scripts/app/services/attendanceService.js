@@ -19,5 +19,4 @@
         createAttendance: createAttendance,
         deleteAttendance: deleteAttendance
     }
-
 }();

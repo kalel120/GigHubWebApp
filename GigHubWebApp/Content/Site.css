@@ -140,6 +140,8 @@ textarea {
 }
 .gigs > li .details .genre {
   font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
   text-transform: lowercase;
 }
 .gigs > li .details .actions {
