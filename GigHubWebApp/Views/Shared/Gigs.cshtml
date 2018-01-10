@@ -15,7 +15,7 @@
         </div>
     </div>
 }
-<ul class="gigs voffset10">
+<ul id="gigs" class="gigs voffset10">
     @foreach (var gig in Model.UpcomingGigs) {
         <li>
             <div class="date">
@@ -56,7 +56,7 @@
 @section scripts {
     <script>
         $(function () {
-            GigsController.init();
+            GigsController.init("#gigs");
 
             $(".js-toggle-followArtist").click(function (event) {
                 let followArtistBtn = $(event.target);
