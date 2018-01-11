@@ -277,6 +277,9 @@
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
+    <Compile Include="Repositories\AttendancesRepository.cs" />
+    <Compile Include="Repositories\FollowingRepository.cs" />
+    <Compile Include="Repositories\GigsRepositories.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Genre.cs" />
