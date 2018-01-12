@@ -277,6 +277,7 @@
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\NotificationType.cs" />
     <Compile Include="Models\UserNotification.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Repositories\AttendancesRepository.cs" />
     <Compile Include="Repositories\FollowingRepository.cs" />
     <Compile Include="Repositories\GenreRepository.cs" />
@@ -438,6 +439,9 @@
     <EmbeddedResource Include="Migrations\201712061044541_AddedNotificationTables.resx">
       <DependentUpon>201712061044541_AddedNotificationTables.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
