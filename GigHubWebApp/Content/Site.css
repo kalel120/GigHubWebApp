@@ -43,8 +43,8 @@ textarea {
   margin-top: 10px;
 }
 .navbar-inverse {
-  background-color: #ff4342;
-  border-color: #ff4342;
+  background-color: #4267b2;
+  border-color: #4267b2;
 }
 .navbar-inverse .navbar-nav > li > a {
   color: #ffffff;
@@ -56,7 +56,7 @@ textarea {
   position: relative;
 }
 .navbar-inverse .notifications .badge {
-  background: #a80a0a;
+  background: #ce1d1d;
   color: white;
   position: absolute;
   right: 3px;
@@ -95,7 +95,7 @@ textarea {
   height: 43px;
 }
 .form-control:focus {
-  border-color: #ff4342;
+  border-color: #4267b2;
 }
 .btn {
   -ms-border-radius: 5px;

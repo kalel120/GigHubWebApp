@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace GigHubWebApp.Repositories {
-    public class AttendancesRepository {
+    public class AttendancesRepository : IAttendancesRepository {
         private readonly ApplicationDbContext _dbContext;
 
         public AttendancesRepository(ApplicationDbContext dbContext) {
