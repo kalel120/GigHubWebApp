@@ -7,11 +7,10 @@ using System.Web.Mvc;
 
 namespace GigHubWebApp.Controllers {
     public class GigsController : Controller {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public GigsController() {
-            var dbContext = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(dbContext);
+            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
         }
 
         [Authorize]

@@ -2,7 +2,7 @@
 using GigHubWebApp.Repositories;
 
 namespace GigHubWebApp.Persistence {
-    public class UnitOfWork {
+    public class UnitOfWork : IUnitOfWork {
         private readonly ApplicationDbContext _dbContext;
         public IGigsRepositories GigsRepo { get; }
         public IAttendancesRepository AttendancesRepo { get; }
