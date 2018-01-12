@@ -16,5 +16,9 @@ namespace GigHubWebApp.Repositories {
             return _dbContext.Attendences.Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now).ToList();
         }
 
+        public bool GetUserAttendance(int id, string userId) {
+            return _dbContext.Attendences.Any(a => a.GigId == id && a.AttendeeId == userId);
+        }
+
     }
 }

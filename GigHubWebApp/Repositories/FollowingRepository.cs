@@ -14,5 +14,9 @@ namespace GigHubWebApp.Repositories {
             return _dbContext.Followings.Where(f => f.FollowerId == userId).ToList();
         }
 
+        public bool GetUserFollowingArtistOrNot(string artistId, string userId) {
+            return _dbContext.Followings.Any(f => f.FolloweeId == artistId && f.FollowerId == userId);
+        }
+
     }
 }
