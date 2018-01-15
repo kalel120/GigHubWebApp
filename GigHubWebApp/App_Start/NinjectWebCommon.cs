@@ -4,6 +4,7 @@
 namespace GigHubWebApp.App_Start {
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
+    using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;
     using System;
     using System.Web;
@@ -38,6 +39,11 @@ namespace GigHubWebApp.App_Start {
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                kernel.Bind(x => {
+                    x.FromThisAssembly()
+                        .SelectAllClasses()
+                        .BindDefaultInterface();
+                });
                 return kernel;
             }
             catch {

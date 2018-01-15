@@ -9,8 +9,8 @@ namespace GigHubWebApp.Controllers {
     public class GigsController : Controller {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GigsController() {
-            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
+        public GigsController(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
         }
 
         [Authorize]
