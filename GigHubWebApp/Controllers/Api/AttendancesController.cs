@@ -1,25 +1,23 @@
-﻿using Microsoft.AspNet.Identity;
-using System.Linq;
-using System.Web.Http;
+﻿using GigHubWebApp.Core;
 using GigHubWebApp.Core.DTOs;
 using GigHubWebApp.Core.Models;
-using GigHubWebApp.Persistence;
+using Microsoft.AspNet.Identity;
+using System.Web.Http;
 
 namespace GigHubWebApp.Controllers.Api {
     [Authorize]
     public class AttendancesController : ApiController {
+        private readonly IUnitOfWork _unitOfWork;
 
-        private readonly ApplicationDbContext _dbContext;
-
-        public AttendancesController() {
-            _dbContext = new ApplicationDbContext();
+        public AttendancesController(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]
         public IHttpActionResult Attend(AttendanceDto gigDto) {
             var userId = User.Identity.GetUserId();
 
-            if (_dbContext.Attendences.Any(a => a.GigId == gigDto.GigId && a.AttendeeId == userId)) {
+            if (_unitOfWork.AttendancesRepo.GetAttendanceByGigId(gigDto.GigId, userId) != null) {
                 return BadRequest("Duplicate Attendance");
             }
 
@@ -28,9 +26,8 @@ namespace GigHubWebApp.Controllers.Api {
                 AttendeeId = userId
             };
 
-            _dbContext.Attendences.Add(attendence);
-            _dbContext.SaveChanges();
-
+            _unitOfWork.AttendancesRepo.Add(attendence);
+            _unitOfWork.Complete();
             return Ok();
         }
 
@@ -38,13 +35,13 @@ namespace GigHubWebApp.Controllers.Api {
         public IHttpActionResult Absent(int id) {
             var userId = User.Identity.GetUserId();
 
-            var attendence = _dbContext.Attendences.SingleOrDefault(a => a.GigId == id && a.AttendeeId == userId);
+            var attendence = _unitOfWork.AttendancesRepo.GetAttendanceByGigId(id, userId);
             if (attendence == null) {
                 return NotFound();
             }
 
-            _dbContext.Attendences.Remove(attendence);
-            _dbContext.SaveChanges();
+            _unitOfWork.AttendancesRepo.Remove(attendence);
+            _unitOfWork.Complete();
 
             return Ok(id);
         }
