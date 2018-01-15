@@ -322,6 +322,8 @@
     <Compile Include="Core\ViewModels\GigsViewModel.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Repositories\INotificationRepository.cs" />
+    <Compile Include="Repositories\NotificationsRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Core\ViewModels\FutureDate.cs" />
     <Compile Include="Core\ViewModels\GigFormViewModel.cs" />

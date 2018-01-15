@@ -6,6 +6,7 @@ namespace GigHubWebApp.Core {
         IAttendancesRepository AttendancesRepo { get; }
         IFollowingRepository FollowingRepo { get; }
         IGenreRepository GenreRepo { get; }
+        INotificationRepository NotificationRepository { get; }
         void Complete();
     }
 }
