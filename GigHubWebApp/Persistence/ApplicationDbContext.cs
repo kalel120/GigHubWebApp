@@ -1,4 +1,5 @@
 ﻿using GigHubWebApp.Core.Models;
+using GigHubWebApp.Persistence.EntityConfigurations;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
@@ -22,25 +23,11 @@ namespace GigHubWebApp.Persistence {
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
-            modelBuilder.Entity<Attendence>()
-                .HasRequired(g => g.Gig)
-                .WithMany(a => a.Attendences)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Configurations.Add(new GigConfiguration());
 
-            modelBuilder.Entity<ApplicationUser>()
-                .HasMany(u => u.Followees)
-                .WithRequired(u => u.Follower)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Configurations.Add(new AppUserConfiguration());
 
-            modelBuilder.Entity<ApplicationUser>()
-                .HasMany(u => u.Followers)
-                .WithRequired(u => u.Followee)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<UserNotification>()
-                .HasRequired(u => u.User)
-                .WithMany(n => n.UserNotifications)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Configurations.Add(new UserNotificationConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
