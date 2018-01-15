@@ -10,5 +10,6 @@ namespace GigHubWebApp.Core.Repositories {
         Gig GetGigWithAttendees(int gigId);
         Gig GetGigByGigId(int id);
         void Add(Gig gig);
+        void CancelGigWithNotificationToAttendees(Gig gig);
     }
 }
