@@ -1,10 +1,9 @@
-﻿using GigHubWebApp.Persistence;
+﻿using GigHubWebApp.Core;
+using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
-using GigHubWebApp.Core;
-using GigHubWebApp.Core.Models;
-using GigHubWebApp.Core.ViewModels;
 
 namespace GigHubWebApp.Controllers {
     public class GigsController : Controller {
@@ -101,7 +100,7 @@ namespace GigHubWebApp.Controllers {
             var gigsViewModel = new GigsViewModel {
                 UpcomingGigs = _unitOfWork.GigsRepo.GetGigsUserAttending(userId),
                 Attendences = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
-                Followees = _unitOfWork.FollowingRepo.GetArtistUserFollowing(userId).ToLookup(f => f.FolloweeId),
+                Followees = _unitOfWork.FollowingRepo.GetFollowingsTableByFollowerId(userId).ToLookup(f => f.FolloweeId),
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Heading = "Gig's I'm Going"
             };

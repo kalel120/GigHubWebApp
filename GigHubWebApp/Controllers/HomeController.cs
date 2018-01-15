@@ -1,10 +1,9 @@
-﻿using GigHubWebApp.Repositories;
+﻿using GigHubWebApp.Core.ViewModels;
+using GigHubWebApp.Persistence;
+using GigHubWebApp.Repositories;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
-using GigHubWebApp.Core.Models;
-using GigHubWebApp.Core.ViewModels;
-using GigHubWebApp.Persistence;
 
 namespace GigHubWebApp.Controllers {
     public class HomeController : Controller {
@@ -33,7 +32,7 @@ namespace GigHubWebApp.Controllers {
             var upcomingGigsViewModel = new GigsViewModel {
                 UpcomingGigs = upcomingGigs,
                 IsAuthenticated = User.Identity.IsAuthenticated,
-                Followees = _followingRepo.GetArtistUserFollowing(userId).ToLookup(f => f.FolloweeId),
+                Followees = _followingRepo.GetFollowingsTableByFollowerId(userId).ToLookup(f => f.FolloweeId),
                 Attendences = _attendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
                 Heading = "All Upcoming Gigs",
                 SearchTerm = query

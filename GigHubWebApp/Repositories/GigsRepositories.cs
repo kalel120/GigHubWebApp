@@ -1,10 +1,10 @@
-﻿using System;
+﻿using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.Repositories;
+using GigHubWebApp.Persistence;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using GigHubWebApp.Core.Models;
-using GigHubWebApp.Core.Repositories;
-using GigHubWebApp.Persistence;
 
 namespace GigHubWebApp.Repositories {
     public class GigsRepositories : IGigsRepositories {

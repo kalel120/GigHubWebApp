@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using GigHubWebApp.Core.Models;
+﻿using GigHubWebApp.Core.Models;
+using System.Collections.Generic;
 
 namespace GigHubWebApp.Core.ViewModels {
     public class FollowingArtistViewModel {
-        public List<ApplicationUser> FollowingArtist { get; set; }
+        public IEnumerable<ApplicationUser> FollowingArtist { get; set; }
     }
 }
