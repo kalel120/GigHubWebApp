@@ -1,6 +1,6 @@
-﻿using GigHubWebApp.Models;
-using GigHubWebApp.Persistence;
-using GigHubWebApp.ViewModels;
+﻿using GigHubWebApp.Core;
+using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,8 +9,8 @@ namespace GigHubWebApp.Controllers {
     public class GigsController : Controller {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GigsController() {
-            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
+        public GigsController(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
         }
 
         [Authorize]
@@ -100,7 +100,7 @@ namespace GigHubWebApp.Controllers {
             var gigsViewModel = new GigsViewModel {
                 UpcomingGigs = _unitOfWork.GigsRepo.GetGigsUserAttending(userId),
                 Attendences = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
-                Followees = _unitOfWork.FollowingRepo.GetArtistUserFollowing(userId).ToLookup(f => f.FolloweeId),
+                Followees = _unitOfWork.FollowingRepo.GetFollowingsTableByFollowerId(userId).ToLookup(f => f.FolloweeId),
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Heading = "Gig's I'm Going"
             };
@@ -135,8 +135,9 @@ namespace GigHubWebApp.Controllers {
 
             if (User.Identity.IsAuthenticated) {
                 var userId = User.Identity.GetUserId();
-                gigDetailsViewModel.IsAttending = _unitOfWork.AttendancesRepo.GetUserAttendance(id, userId);
-                gigDetailsViewModel.IsFollowing = _unitOfWork.FollowingRepo.GetUserFollowingArtistOrNot(gig.ArtistId, userId);
+                // The inequality operator (!=) returns false if its operands are equal, true otherwise
+                gigDetailsViewModel.IsAttending = _unitOfWork.AttendancesRepo.GetAttendanceByGigId(id, userId) != null;
+                gigDetailsViewModel.IsFollowing = _unitOfWork.FollowingRepo.IsUserFollowing(gig.ArtistId, userId);
             }
 
             return View("Details", gigDetailsViewModel);

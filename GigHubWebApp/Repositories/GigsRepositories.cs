@@ -1,4 +1,6 @@
-﻿using GigHubWebApp.Models;
+﻿using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.Repositories;
+using GigHubWebApp.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -48,6 +50,10 @@ namespace GigHubWebApp.Repositories {
 
         public void Add(Gig gig) {
             _dbContext.Gigs.Add(gig);
+        }
+
+        public void CancelGigWithNotificationToAttendees(Gig gig) {
+            gig.Cancel();
         }
     }
 }

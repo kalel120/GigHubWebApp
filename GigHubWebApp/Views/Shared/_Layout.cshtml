@@ -74,7 +74,7 @@
         $(function () {
             $.getJSON("/api/notifications", function (notifications) {
                 if (notifications.length === 0) {
-                    //$("#js-globe-icon").addClass("text-muted");
+                    $("#js-globe-icon").addClass("text-muted");
                     return;
                 }
 
