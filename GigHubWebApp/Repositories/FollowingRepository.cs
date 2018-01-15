@@ -22,9 +22,20 @@ namespace GigHubWebApp.Repositories {
                 .ToList();
         }
 
-        public bool GetUserFollowingArtistOrNot(string artistId, string userId) {
+        public Following GetFolloweeByFollowerId(string userId, string followeeId) {
+            return _dbContext.Followings.SingleOrDefault(f => f.FollowerId == userId && f.FolloweeId == followeeId);
+        }
+
+        public bool IsUserFollowing(string artistId, string userId) {
             return _dbContext.Followings.Any(f => f.FolloweeId == artistId && f.FollowerId == userId);
         }
 
+        public void Add(Following following) {
+            _dbContext.Followings.Add(following);
+        }
+
+        public void Remove(Following following) {
+            _dbContext.Followings.Remove(following);
+        }
     }
 }

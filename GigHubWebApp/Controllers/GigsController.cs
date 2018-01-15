@@ -137,7 +137,7 @@ namespace GigHubWebApp.Controllers {
                 var userId = User.Identity.GetUserId();
                 // The inequality operator (!=) returns false if its operands are equal, true otherwise
                 gigDetailsViewModel.IsAttending = _unitOfWork.AttendancesRepo.GetAttendanceByGigId(id, userId) != null;
-                gigDetailsViewModel.IsFollowing = _unitOfWork.FollowingRepo.GetUserFollowingArtistOrNot(gig.ArtistId, userId);
+                gigDetailsViewModel.IsFollowing = _unitOfWork.FollowingRepo.IsUserFollowing(gig.ArtistId, userId);
             }
 
             return View("Details", gigDetailsViewModel);
