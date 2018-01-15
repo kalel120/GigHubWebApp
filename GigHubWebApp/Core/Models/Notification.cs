@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 namespace GigHubWebApp.Core.Models {
     public class Notification {
         public int Id { get; set; }
-
         public DateTime DateTime { get; private set; }
         public DateTime? OriginalDateTime { get; private set; }
         public string OriginalVenue { get; private set; }
@@ -13,17 +12,15 @@ namespace GigHubWebApp.Core.Models {
         [Required]
         public Gig Gig { get; private set; }
 
-        public Notification() {
-        }
+        public Notification() { }
 
         private Notification(NotificationType type, Gig gig) {
-            if (gig == null) {
-                throw new ArgumentNullException("gig");
-            }
-
             Type = type;
-            Gig = gig;
             DateTime = DateTime.Now;
+
+            // ?? (null-coalescing) returns the left-hand operand if the operand is not null; 
+            //otherwise it returns the right hand operand.
+            Gig = gig ?? throw new ArgumentNullException("gig");
         }
 
         public Notification GigCreated(Gig gig) {

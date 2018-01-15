@@ -31,6 +31,10 @@ namespace GigHubWebApp.Persistence {
 
             modelBuilder.Configurations.Add(new AttendancesConfiguration());
 
+            modelBuilder.Configurations.Add(new FollowingConfiguration());
+
+            modelBuilder.Configurations.Add(new GenreConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }
