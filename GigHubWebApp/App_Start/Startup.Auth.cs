@@ -1,11 +1,12 @@
 ﻿using System;
+using GigHubWebApp.Core.Models;
+using GigHubWebApp.Persistence;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using GigHubWebApp.Models;
 
 namespace GigHubWebApp
 {

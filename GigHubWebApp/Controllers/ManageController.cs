@@ -3,11 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using GigHubWebApp.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using GigHubWebApp.Models;
-using GigHubWebApp.ViewModels;
 
 namespace GigHubWebApp.Controllers
 {

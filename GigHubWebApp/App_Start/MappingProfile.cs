@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GigHubWebApp.DTOs;
-using GigHubWebApp.Models;
+using GigHubWebApp.Core.DTOs;
+using GigHubWebApp.Core.Models;
 
 namespace GigHubWebApp {
     public class MappingProfile : Profile {

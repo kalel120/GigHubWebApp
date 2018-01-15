@@ -1,9 +1,10 @@
-﻿using GigHubWebApp.Models;
-using GigHubWebApp.Persistence;
-using GigHubWebApp.ViewModels;
+﻿using GigHubWebApp.Persistence;
 using Microsoft.AspNet.Identity;
 using System.Linq;
 using System.Web.Mvc;
+using GigHubWebApp.Core;
+using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.ViewModels;
 
 namespace GigHubWebApp.Controllers {
     public class GigsController : Controller {
