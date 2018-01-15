@@ -253,6 +253,7 @@
     <Compile Include="Core\DTOs\GigDto.cs" />
     <Compile Include="Core\DTOs\NotificationDto.cs" />
     <Compile Include="Core\DTOs\UserDto.cs" />
+    <Compile Include="Persistence\EntityConfigurations\AttendancesConfiguration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -299,8 +300,12 @@
     <Compile Include="Persistence\Migrations\201712061044541_AddedNotificationTables.Designer.cs">
       <DependentUpon>201712061044541_AddedNotificationTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201801151614512_AttendancesSpellBugFix.cs" />
+    <Compile Include="Persistence\Migrations\201801151614512_AttendancesSpellBugFix.Designer.cs">
+      <DependentUpon>201801151614512_AttendancesSpellBugFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
-    <Compile Include="Core\Models\Attendence.cs" />
+    <Compile Include="Core\Models\Attendance.cs" />
     <Compile Include="Core\Models\Following.cs" />
     <Compile Include="Core\Models\Notification.cs" />
     <Compile Include="Core\Models\NotificationType.cs" />
@@ -473,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201712061044541_AddedNotificationTables.resx">
       <DependentUpon>201712061044541_AddedNotificationTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201801151614512_AttendancesSpellBugFix.resx">
+      <DependentUpon>201801151614512_AttendancesSpellBugFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

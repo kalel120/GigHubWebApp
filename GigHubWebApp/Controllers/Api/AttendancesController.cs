@@ -21,7 +21,7 @@ namespace GigHubWebApp.Controllers.Api {
                 return BadRequest("Duplicate Attendance");
             }
 
-            var attendence = new Attendence {
+            var attendence = new Attendance {
                 GigId = gigDto.GigId,
                 AttendeeId = userId
             };

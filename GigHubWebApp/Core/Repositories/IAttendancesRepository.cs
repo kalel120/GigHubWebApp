@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace GigHubWebApp.Core.Repositories {
     public interface IAttendancesRepository {
-        IEnumerable<Attendence> GetUsersFutureAttendances(string userId);
-        Attendence GetAttendanceByGigId(int id, string userId);
-        void Add(Attendence attendence);
-        void Remove(Attendence attendence);
+        IEnumerable<Attendance> GetUsersFutureAttendances(string userId);
+        Attendance GetAttendanceByGigId(int id, string userId);
+        void Add(Attendance attendance);
+        void Remove(Attendance attendance);
     }
 }

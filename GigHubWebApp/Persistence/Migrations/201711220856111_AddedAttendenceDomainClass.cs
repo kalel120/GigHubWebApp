@@ -1,11 +1,10 @@
 namespace GigHubWebApp.Migrations {
-    using System;
     using System.Data.Entity.Migrations;
 
     public partial class AddedAttendenceDomainClass : DbMigration {
         public override void Up() {
             CreateTable(
-                "dbo.Attendences",
+                "dbo.Attendances",
                 c => new {
                     GigId = c.Int(nullable: false),
                     AttendeeId = c.String(nullable: false, maxLength: 128),
@@ -19,11 +18,11 @@ namespace GigHubWebApp.Migrations {
         }
 
         public override void Down() {
-            DropForeignKey("dbo.Attendences", "GigId", "dbo.Gigs");
-            DropForeignKey("dbo.Attendences", "AttendeeId", "dbo.AspNetUsers");
-            DropIndex("dbo.Attendences", new[] { "AttendeeId" });
-            DropIndex("dbo.Attendences", new[] { "GigId" });
-            DropTable("dbo.Attendences");
+            DropForeignKey("dbo.Attendances", "GigId", "dbo.Gigs");
+            DropForeignKey("dbo.Attendances", "AttendeeId", "dbo.AspNetUsers");
+            DropIndex("dbo.Attendances", new[] { "AttendeeId" });
+            DropIndex("dbo.Attendances", new[] { "GigId" });
+            DropTable("dbo.Attendances");
         }
     }
 }

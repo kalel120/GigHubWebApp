@@ -9,7 +9,7 @@ namespace GigHubWebApp.Persistence {
 
         public DbSet<Gig> Gigs { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Attendence> Attendences { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Following> Followings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<UserNotification> UserNotifications { get; set; }
@@ -28,6 +28,8 @@ namespace GigHubWebApp.Persistence {
             modelBuilder.Configurations.Add(new AppUserConfiguration());
 
             modelBuilder.Configurations.Add(new UserNotificationConfiguration());
+
+            modelBuilder.Configurations.Add(new AttendancesConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

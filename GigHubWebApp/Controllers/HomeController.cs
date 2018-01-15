@@ -24,7 +24,7 @@ namespace GigHubWebApp.Controllers {
                 UpcomingGigs = upcomingGigs,
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Followees = _unitOfWork.FollowingRepo.GetFollowingsTableByFollowerId(userId).ToLookup(f => f.FolloweeId),
-                Attendences = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
+                Attendances = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
                 Heading = "All Upcoming Gigs",
                 SearchTerm = query
             };

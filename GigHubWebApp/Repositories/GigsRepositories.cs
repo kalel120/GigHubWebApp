@@ -15,7 +15,7 @@ namespace GigHubWebApp.Repositories {
         }
 
         public IEnumerable<Gig> GetGigsUserAttending(string userId) {
-            return _dbContext.Attendences
+            return _dbContext.Attendances
                 .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
                 .Select(a => a.Gig)
                 .Include(ar => ar.Artist)

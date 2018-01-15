@@ -1,8 +1,8 @@
-﻿using System;
+﻿using GigHubWebApp.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using GigHubWebApp.Core.ViewModels;
 
 namespace GigHubWebApp.Core.Models {
 
@@ -10,23 +10,23 @@ namespace GigHubWebApp.Core.Models {
         public int Id { get; set; }
 
         public ApplicationUser Artist { get; set; }
-        
+
         public string ArtistId { get; set; }
 
         public DateTime DateTime { get; set; }
-        
+
         public string Venue { get; set; }
 
         public Genre Genre { get; set; }
-        
+
         public byte GenreId { get; set; }
 
         public bool IsCanceled { get; private set; }
 
-        public ICollection<Attendence> Attendences { get; private set; }
+        public ICollection<Attendance> Attendences { get; private set; }
 
         public Gig() {
-            Attendences = new Collection<Attendence>();
+            Attendences = new Collection<Attendance>();
         }
 
         public void Cancel() {

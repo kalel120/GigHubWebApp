@@ -99,7 +99,7 @@ namespace GigHubWebApp.Controllers {
 
             var gigsViewModel = new GigsViewModel {
                 UpcomingGigs = _unitOfWork.GigsRepo.GetGigsUserAttending(userId),
-                Attendences = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
+                Attendances = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
                 Followees = _unitOfWork.FollowingRepo.GetFollowingsTableByFollowerId(userId).ToLookup(f => f.FolloweeId),
                 IsAuthenticated = User.Identity.IsAuthenticated,
                 Heading = "Gig's I'm Going"

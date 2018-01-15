@@ -40,8 +40,8 @@
                     @gig.Genre.Name
                 </span>
                 @if (Model.IsAuthenticated && !gig.IsCanceled) {
-                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id) ? "btn-info" : "btn-default") btn-sm js-toggle-attendance">
-                        @(Model.Attendences.Contains(gig.Id) ? "Will Go!" : "Going?")
+                    <button data-gig-id="@gig.Id" class="btn @(Model.Attendances.Contains(gig.Id) ? "btn-info" : "btn-default") btn-sm js-toggle-attendance">
+                        @(Model.Attendances.Contains(gig.Id) ? "Will Go!" : "Going?")
                     </button>
                 }
             </div>
