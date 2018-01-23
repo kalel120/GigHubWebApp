@@ -1,6 +1,5 @@
 ﻿using GigHubWebApp.Core;
 using Microsoft.AspNet.Identity;
-using System.Net;
 using System.Web.Http;
 
 namespace GigHubWebApp.Controllers.Api {
@@ -23,7 +22,7 @@ namespace GigHubWebApp.Controllers.Api {
                 return NotFound();
 
             if (gig.ArtistId != User.Identity.GetUserId())
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
+                return Unauthorized();
 
             _unitOfWork.GigsRepo.CancelGigWithNotificationToAttendees(gig);
 
