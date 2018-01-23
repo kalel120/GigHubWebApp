@@ -16,13 +16,14 @@ namespace GigHubWebApp.Controllers.Api {
         public IHttpActionResult Cancel(int id) {
             var gig = _unitOfWork.GigsRepo.GetGigWithAttendees(id);
 
-            if (gig.ArtistId != User.Identity.GetUserId()) {
-                throw new HttpResponseException(HttpStatusCode.Unauthorized);
-            }
-
-            if (gig.IsCanceled) {
+            if (gig == null)
                 return NotFound();
-            }
+
+            if (gig.IsCanceled)
+                return NotFound();
+
+            if (gig.ArtistId != User.Identity.GetUserId())
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
 
             _unitOfWork.GigsRepo.CancelGigWithNotificationToAttendees(gig);
 
