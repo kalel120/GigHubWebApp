@@ -11,8 +11,18 @@ namespace GigHubWebApp.Core.Models {
         protected UserNotification() { }
 
         public UserNotification(ApplicationUser user, Notification notification) {
-            User = user ?? throw new ArgumentNullException("user");
-            Notification = notification ?? throw new ArgumentNullException("notification");
+            //User = user ?? throw new ArgumentNullException("user");
+            //Notification = notification ?? throw new ArgumentNullException("notification");
+
+            if (user == null)
+                throw new ArgumentNullException("user");
+
+            User = user;
+
+            if (notification == null)
+                throw new ArgumentNullException("notification");
+
+            Notification = notification;
         }
 
         public void Read() {
