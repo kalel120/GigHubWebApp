@@ -18,9 +18,13 @@ namespace GigHubWebApp.Core.Models {
             Type = type;
             DateTime = DateTime.Now;
 
-            // ?? (null-coalescing) returns the left-hand operand if the operand is not null; 
+            // ?? (null-coalescing) returns the left-hand operand if the operand is not null;
             //otherwise it returns the right hand operand.
-            Gig = gig ?? throw new ArgumentNullException("gig");
+            //Gig = gig ?? throw new ArgumentNullException("gig");
+
+            if (gig == null)
+                throw new ArgumentNullException("gig");
+            Gig = gig;
         }
 
         public Notification GigCreated(Gig gig) {
