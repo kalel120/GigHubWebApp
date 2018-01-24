@@ -98,7 +98,7 @@ namespace GigHubWebApp.Controllers {
             var userId = User.Identity.GetUserId();
 
             var gigsViewModel = new GigsViewModel {
-                UpcomingGigs = _unitOfWork.GigsRepo.GetGigsUserAttending(userId),
+                UpcomingGigs = _unitOfWork.GigsRepo.GetUpcomingGigsByArtistId(userId),
                 Attendances = _unitOfWork.AttendancesRepo.GetUsersFutureAttendances(userId).ToLookup(a => a.GigId),
                 Followees = _unitOfWork.FollowingRepo.GetFollowingsTableByFollowerId(userId).ToLookup(f => f.FolloweeId),
                 IsAuthenticated = User.Identity.IsAuthenticated,
