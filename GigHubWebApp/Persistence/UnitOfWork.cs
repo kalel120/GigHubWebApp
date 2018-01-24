@@ -1,6 +1,6 @@
 ﻿using GigHubWebApp.Core;
 using GigHubWebApp.Core.Repositories;
-using GigHubWebApp.Repositories;
+using GigHubWebApp.Persistence.Repositories;
 
 namespace GigHubWebApp.Persistence {
     public class UnitOfWork : IUnitOfWork {
