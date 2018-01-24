@@ -16,7 +16,8 @@ namespace GigHubWebApp.Tests.Controllers.Api {
         private Mock<IGigsRepositories> _mockRepository;
         private string _userid;
 
-        public GigsControllerUnitTests() {
+        [TestInitialize]
+        public void TestInitialize() {
             _mockRepository = new Mock<IGigsRepositories>();
 
             var mockUoW = new Mock<IUnitOfWork>();
@@ -39,7 +40,6 @@ namespace GigHubWebApp.Tests.Controllers.Api {
             var newGig = new Gig();
             newGig.Cancel();
 
-            // This mock repository does setup gig repo with mockUser "1" and return our newly creatd gig object.
             _mockRepository.Setup(r => r.GetGigWithAttendees(1)).Returns(newGig);
 
             var result = _gigsController.Cancel(1);
