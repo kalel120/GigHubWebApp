@@ -2,9 +2,8 @@
 using System.Linq;
 using GigHubWebApp.Core.Models;
 using GigHubWebApp.Core.Repositories;
-using GigHubWebApp.Persistence;
 
-namespace GigHubWebApp.Repositories {
+namespace GigHubWebApp.Persistence.Repositories {
     public class GenreRepository : IGenreRepository {
         private readonly ApplicationDbContext _dbContext;
 
