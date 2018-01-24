@@ -1,23 +1,23 @@
-﻿using System;
+﻿using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using GigHubWebApp.Core.Models;
-using GigHubWebApp.Core.Repositories;
 
 namespace GigHubWebApp.Persistence.Repositories {
     public class GigsRepositories : IGigsRepositories {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public GigsRepositories(ApplicationDbContext dbContext) {
+        public GigsRepositories(IApplicationDbContext dbContext) {
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Gig> GetGigsUserAttending(string userId) {
-            return _dbContext.Attendances
-                .Where(a => a.AttendeeId == userId && a.Gig.DateTime > DateTime.Now)
-                .Select(a => a.Gig)
-                .Include(ar => ar.Artist)
+        public IEnumerable<Gig> GetUpcomingGigsByArtistId(string userId) {
+            return _dbContext.Gigs
+                .Where(g => g.ArtistId == userId
+                            && g.DateTime > DateTime.Now
+                            && !g.IsCanceled)
                 .Include(g => g.Genre)
                 .ToList();
         }
