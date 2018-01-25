@@ -25,7 +25,7 @@ namespace GigHubWebApp.Tests.Persistence.Repositories {
         }
 
         [TestMethod]
-        public void GetGigsUserAttending_PastGigs_ShouldNotBeReturned() {
+        public void GetUpcomingGigsByArtist_PastGigs_ShouldNotBeReturned() {
             var gig = new Gig { DateTime = DateTime.Now.AddDays(-1), ArtistId = "1" };
 
             _mockGigs.SetSource(new[] { gig });
@@ -35,5 +35,49 @@ namespace GigHubWebApp.Tests.Persistence.Repositories {
             result.Should().BeEmpty();
         }
 
+        [TestMethod]
+        public void GetUpcomingGigsByArtist_GigIsCanceled_ShouldNotBeReturned() {
+            var gig = new Gig { DateTime = DateTime.Now.AddDays(1), ArtistId = "1" };
+            gig.Cancel();
+
+            _mockGigs.SetSource(new[] { gig });
+
+            var result = _gigRepo.GetUpcomingGigsByArtistId("1");
+
+            result.Should().BeEmpty();
+        }
+
+        [TestMethod]
+        public void GetUpcomingGigsByArtist_GigForDifferentArtist_ShouldNotBeReturned() {
+            var gig = new Gig { DateTime = DateTime.Now.AddDays(1), ArtistId = "1" };
+
+            _mockGigs.SetSource(new[] { gig });
+
+            var result = _gigRepo.GetUpcomingGigsByArtistId(gig.ArtistId + "-");
+
+            result.Should().BeEmpty();
+        }
+
+        [TestMethod]
+        public void GetUpcomingGigsByArtist_GigForGivenArtistWhichInTheFuture_ShouldReturn() {
+            var gig = new Gig { DateTime = DateTime.Now.AddDays(1), ArtistId = "1" };
+
+            _mockGigs.SetSource(new[] { gig });
+
+            var result = _gigRepo.GetUpcomingGigsByArtistId(gig.ArtistId);
+
+            result.Should().Contain(gig);
+        }
+
+        [TestMethod]
+        public void GetGigWithAttendees_NoGigFoundWithGivenId_ShouldReturnNull() {
+            var gig = new Gig { DateTime = DateTime.Now.AddDays(1) };
+
+            _mockGigs.SetSource(new[] { gig });
+
+            var result = _gigRepo.GetGigWithAttendees(1);
+
+            result.Should().BeNull();
+        }
     }
 }
