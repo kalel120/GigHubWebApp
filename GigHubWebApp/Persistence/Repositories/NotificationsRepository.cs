@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using GigHubWebApp.Core.Models;
+using GigHubWebApp.Core.Repositories;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using GigHubWebApp.Core.Models;
-using GigHubWebApp.Core.Repositories;
 
 namespace GigHubWebApp.Persistence.Repositories {
     public class NotificationsRepository : INotificationRepository {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly IApplicationDbContext _dbContext;
 
-        public NotificationsRepository(ApplicationDbContext dbContext) {
+        public NotificationsRepository(IApplicationDbContext dbContext) {
             _dbContext = dbContext;
         }
 
