@@ -68,16 +68,5 @@ namespace GigHubWebApp.Tests.Persistence.Repositories {
 
             result.Should().Contain(gig);
         }
-
-        [TestMethod]
-        public void GetGigWithAttendees_NoGigFoundWithGivenId_ShouldReturnNull() {
-            var gig = new Gig { DateTime = DateTime.Now.AddDays(1) };
-
-            _mockGigs.SetSource(new[] { gig });
-
-            var result = _gigRepo.GetGigWithAttendees(1);
-
-            result.Should().BeNull();
-        }
     }
 }
